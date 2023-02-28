@@ -1,4 +1,6 @@
 console.clear();
+
+
 //Задание 1
 //Создайте функцию которая возводит переданное число в куб, необходимо вывести в консоль результат 2 ^ 3 степени + 3 ^ 3 степени
 
@@ -19,14 +21,16 @@ function BinPow(number, degree) {
 function Cubing(num) {
     return BinPow(num, 3);
 }
-
-console.log(` 2 ^ 3 степени равно ${Cubing(2)}
+function FirstTask() {
+    console.log(` 2 ^ 3 степени равно ${Cubing(2)}
  3 ^ 3 степени равно ${Cubing(3)}`);
 
-let numToCub = +prompt("Введите число для возведения в куб");
+    let numToCub = +prompt("Введите число для возведения в куб");
 
-console.log(`${numToCub} ^ 3 степени равно ${Cubing(numToCub)}`);
+    console.log(`${numToCub} ^ 3 степени равно ${Cubing(numToCub)}`);
+}
 
+FirstTask();
 // Сравнивал время, не относится к заданию
 //let datestart = Date.now();
 //console.log(BinPow(16, 19));
@@ -54,9 +58,12 @@ function Get13Persents(num) {
     console.log(`Размер заработной платы за вычетом налогов равен значение ${num - (num * 0.13)}`);
 }
 
-let numZP = prompt("Введите число - значение з.п");
-(CheckNumPrompt(numZP)) ? Get13Persents(numZP) : console.log("Значение задано неверно");
+function SecondTask() {
+    let numZP = prompt("Введите число - значение з.п");
+    (CheckNumPrompt(numZP)) ? Get13Persents(numZP) : console.log("Значение задано неверно");
 
+}
+SecondTask();
 
 
 //Задание 3
@@ -72,11 +79,14 @@ function FindMaxOf3Ver2(num1, num2, num3) {
     return Math.max(num1, num2, num3);
 }
 
-let num1From3Task = +prompt("Введите 1 число"), num2From3Task = +prompt("Введите 2 число"), num3From3Task = +prompt("Введите 3 число");
+function ThirdTask() {
+    let num1From3Task = +prompt("Введите 1 число"), num2From3Task = +prompt("Введите 2 число"), num3From3Task = +prompt("Введите 3 число");
 
-console.log(`Из 3 чисел: ${num1From3Task}, ${num2From3Task} и ${num3From3Task} максимальным является: ${FindMaxOf3(num1From3Task, num2From3Task, num3From3Task)}`);
-console.log(`Из 3 чисел: ${num1From3Task}, ${num2From3Task} и ${num3From3Task} максимальным является: ${FindMaxOf3Ver2(num1From3Task, num2From3Task, num3From3Task)}`);
+    console.log(`Из 3 чисел: ${num1From3Task}, ${num2From3Task} и ${num3From3Task} максимальным является: ${FindMaxOf3(num1From3Task, num2From3Task, num3From3Task)}`);
+    console.log(`Из 3 чисел: ${num1From3Task}, ${num2From3Task} и ${num3From3Task} максимальным является: ${FindMaxOf3Ver2(num1From3Task, num2From3Task, num3From3Task)}`);
 
+}
+ThirdTask();
 //Задание 4
 //Необходимо реализовать четыре функции, каждая функция должна принимать по два числа и выполнять одну из операций(каждая функция выполняет одну из них):
 //1. Сложение
@@ -98,7 +108,7 @@ function DiffNum(num1, num2) {
 // Тоже самое, но без Math max/min
 function DiffNum2(num1, num2) {
 
-    return (num1>num2)?(num1-num2):(num2-num1);
+    return (num1 > num2) ? (num1 - num2) : (num2 - num1);
 }
 
 function MultiNum(num1, num2) {
@@ -110,11 +120,15 @@ function DivNum(num1, num2) {
     return num1 / num2;
 }
 
-console.log(SummNum(2, 6));
-console.log(DiffNum(2, 6));
-console.log(DiffNum(6, 2));
-console.log(MultiNum(2, 6));
-console.log(DivNum(2, 6));
+function FourthTask() {
+    console.log(SummNum(2, 6));
+    console.log(DiffNum(2, 6));
+    console.log(DiffNum(6, 2));
+    console.log(MultiNum(2, 6));
+    console.log(DivNum(2, 6));
 
-console.log(DiffNum2(2, 6));
-console.log(DiffNum2(6, 2));
+    console.log(DiffNum2(2, 6));
+    console.log(DiffNum2(6, 2));
+}
+
+FourthTask();

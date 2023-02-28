@@ -8,11 +8,46 @@
     <title>HW1-2</title>
 
     <!--<script defer src="./scr/scriptHW3.js" rel="stylesheet"></script>-->
-    <script defer src="./scr/scriptHW4.js" rel="stylesheet"></script>
+    <!--<script defer src="./scr/scriptHW4.js" rel="stylesheet"></script>-->
     <!--<script defer src="./scr/scriptHW5.js" rel="stylesheet"></script>-->
+
+
+
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
 </head>
 <body>
+    <select id="selHWList">
+        <option value="scriptHW3.js">Homework3</option>
+        <option value="scriptHW4.js">Homework4</option>
+        <option value="scriptHW5.js">Homework5</option>
+    </select>
+    <!--<input type="button" id="HWSelect" value="Запустить выбраную ДЗ">-->
+    <button id="HWSelect">"Запустить выбраную ДЗ"</button>
 
+    <script defer type="text/javascript">
+        let HWSelect = document.getElementById("HWSelect");
+        
+        HWSelect.onclick = function () {
+
+       
+            const testScript = Array.from(document.querySelectorAll("script[type='text/javascript']")).find(script => script.id === "HWScript");
+            if (typeof (testScript) !== 'undefined') {
+                let ggg = testScript.parentNode;
+               
+                testScript.parentNode.removeChild(testScript)
+                console.log();
+            }
+            document.querySelectorAll('script').forEach(item => item.remove())
+
+            let selHWList = "./scr/" + document.getElementById("selHWList").value;
+            let script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = selHWList;
+            script.id = "HWScript";
+            document.getElementsByTagName("head")[0].appendChild(script);
+            return false;
+        }
+    </script>
 </body>
+
 </html>
