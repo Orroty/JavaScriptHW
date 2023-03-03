@@ -1,53 +1,48 @@
 ﻿<!DOCTYPE html>
-
-<html lang="ru" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HW1-2-3-4</title>
+    <title>Домашние задания</title>
 
-    <!--<script defer src="./scr/scriptHW3.js" rel="stylesheet"></script>-->
-    <!--<script defer src="./scr/scriptHW4.js" rel="stylesheet"></script>-->
-    <!--<script defer src="./scr/scriptHW5.js" rel="stylesheet"></script>-->
+    <script src="./js/scr.js" rel="stylesheet"></script>
+    <link href="./css/styles.css" rel="stylesheet">
+    <link rel="shortcut icon" type="./image/x-icon" href="./img/favicon.ico">
 
-
-
-    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
 </head>
 <body>
-    <select id="selHWList">
-        <option value="scriptHW3.js">Homework3</option>
-        <option value="scriptHW4.js">Homework4</option>
-        <option value="scriptHW5.js">Homework5</option>
-    </select>
-    <!--<input type="button" id="HWSelect" value="Запустить выбраную ДЗ">-->
-    <button id="HWSelect">"Запустить выбраную ДЗ"</button>
+    <div class="page_container">
+        <nav class="menu">
+            <ul>
+                <li><a href="./HW-3-4-5/index.html">Домашние работы 3 - 4 - 5</a></li>
+                <li><a href="./HW6/index.html">Домашняя работа 6</a></li>
+            </ul>
+        </nav>
 
-    <script defer type="text/javascript">
-        let HWSelect = document.getElementById("HWSelect");
-        
-        HWSelect.onclick = function () {
+        <main>
+            <div class="card">
 
-       
-            const testScript = Array.from(document.querySelectorAll("script[type='text/javascript']")).find(script => script.id === "HWScript");
-            if (typeof (testScript) !== 'undefined') {
-                let ggg = testScript.parentNode;
-               
-                testScript.parentNode.removeChild(testScript)
-                console.log();
-            }
-            document.querySelectorAll('script').forEach(item => item.remove())
+                <p>
+                    Данная страница используется для перенаправления на выполненные домашние задания по курсу <b>JavaScript (семинары)</b>.
+                </p>
 
-            let selHWList = "./scr/" + document.getElementById("selHWList").value;
-            let script = document.createElement("script");
-            script.type = "text/javascript";
-            script.src = selHWList;
-            script.id = "HWScript";
-            document.getElementsByTagName("head")[0].appendChild(script);
-            return false;
-        }
-    </script>
+            </div>
+         
+        </main>
+
+        <footer>
+            <hr>
+
+            <p></p>
+
+            <span id="clock"
+                  style="background-color: #2F4F4F; color: #00FF7F; border: 4px outset #FFA500; padding: 5px 20px; float:right; margin-right:15px;">
+            </span>
+            <div style="margin-left: 15px; color:azure; font-weight:bold;">
+                &copy; Самусь Д.С.
+            </div>
+        </footer>
+    </div>
 </body>
-
 </html>

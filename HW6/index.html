@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HW 6</title>
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
+</head>
+<body>
+
+    <script defer type="text/javascript">
+        console.clear();
+    </script>
+    <!--Обязательное задание.
+
+    Выполнить все задачи в теге script.Комментарии, в которых написаны задачи, не
+    стирать, код с решением задачи пишем под комментарием.-->
+
+
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title" data-number="100">Card title</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text" data-number="50">
+                Some quick example text to build on the card title and make up the bulk of the card's content.
+            </p>
+            <a href="#" id="super_link" class="card-link">Card link</a>
+            <a href="#" class="card-link" data-number="50">Another link</a>
+        </div>
+    </div>
+
+
+    <script>
+        "use strict";
+        //[]()
+        //[]()
+        //1. Найти по id, используя getElementById, элемент с id равным "super_link" и вывести этот элемент в консоль.
+        //[]()
+        console.log("Task1");
+
+        function Task1() {
+            let super_link1 = document.getElementById("super_link");
+            console.log(super_link1);
+
+
+            console.log("Эксперименты с возможностями");
+            console.log(super_link1.innerText);
+            let super_link2 = document.querySelector("#super_link");
+            console.log(super_link2);
+            console.log(super_link1.className);
+            console.log(document.querySelectorAll("." + super_link1.className));
+        }
+
+        Task1();
+
+        //2. Внутри всех элементов на странице, которые имеют класс "card-link", поменяйте текст внутри элемента на "ссылка".
+        //[]()
+        console.log("Task2");
+
+        function Task2() {
+            let card_link_all1 = document.querySelectorAll(".card-link");
+            console.log(card_link_all1);
+            card_link_all1.forEach((e, i) => e.innerText = "Ссылка " + i);
+
+            console.log("Эксперименты с getElementsByClassName");
+            let card_link_all2 = document.getElementsByClassName("card-link");
+            console.log(card_link_all2);
+            [].forEach.call(card_link_all2, ((e, i) => e.innerText = "Ссылка/Link " + i));
+        }
+
+        Task2();
+
+        //3. Найти все элементы на странице с классом "card-link", которые лежат в элементе с классом "card-body" и вывести полученную коллекцию в консоль.
+        //[]()
+        console.log("Task3");
+
+        function Task3() {
+            let card_link_in_card_body1 = document.querySelectorAll(".card-body .card-link");
+            console.log(card_link_in_card_body1);
+
+            console.log("Эксперименты с поиском");
+            let card_link_in_card_body2 = document.querySelector(".card-body").querySelectorAll(".card-link");
+            console.log(card_link_in_card_body2);
+        }
+
+        Task3();
+
+        //4. Найти первый попавшийся элемент на странице у которого есть атрибут data-number со значением 50 и вывести его в консоль.
+        //[]()
+        console.log("Task4");
+
+        function Task4() {
+            let data_number_is_50 = document.querySelector('[data-number="50"]');
+            console.log(data_number_is_50);
+            console.log(data_number_is_50.innerText);
+        }
+
+        Task4();
+
+        //5. Выведите содержимое тега title в консоль.
+        //[]()
+        console.log("Task5");
+
+        function Task5() {
+            console.log(document.title);
+
+            console.log("Эксперименты с title");
+            console.log(document.querySelector('title').innerText);
+            document.title = "Homework #6";
+            console.log(document.title);
+        }
+
+        Task5();
+
+        //6. Получите элемент с классом "card-title" и выведите его родительский узел в консоль.
+        //[]()
+        console.log("Task6");
+
+        function Task6() {
+            console.log(document.querySelector('.card-title').parentNode);
+        }
+
+        Task6();
+
+        //7. Создайте тег `p`, запишите внутри него текст "Привет" и добавьте созданный тег в начало элемента, который имеет класс "card".
+        console.log("Task7");
+
+        function Task7() {
+            let tag_p = document.createElement('p');
+            tag_p.textContent = 'Привет';
+            document.querySelector('.card').prepend(tag_p);
+        }
+
+        Task7();
+
+        //8. Удалите тег h6 на странице.
+        console.log("Task8");
+
+        function Task8() {
+            document.querySelector('h6').remove();
+        }
+
+        Task8();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+﻿body {
+    background: #000;
+    background-image: url(../img/fon.jpg);
+    background-size: 100% auto;
+    align-content: center;
+    box-sizing: border-box;
+    visibility: visible;
+}
+
+a {
+    text-decoration: none;
+}
+
+.page_container {
+    width: 90%;
+    min-height: fit-content;
+    margin: 0 auto;
+}
+
+.menu {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+    .menu ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        top: 0;
+        width: 100%;
+        border-radius: 10px;
+    }
+
+
+
+    .menu li {
+        float: left;
+    }
+
+        .menu li a {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+            .menu li a:hover {
+                background-color: red;
+                transition: 1s;
+            }
+
+
+
+.card {
+    padding: 20px;
+    background-color: ghostwhite;
+    border: 3px solid;
+    border-color: #8b2bde;
+    border-radius: 40px;
+    text-align: justify;
+    margin-bottom: 10px;
+}
+
+.pic_in_text_center {
+    width: 100%;
+    padding: 0;
+    font-size: smaller;
+    text-align: center;
+
+}
+    .pic_in_text_center img {
+        width: 100%;
+        border-radius: 10px;
+        object-fit: cover;
+        object-position: bottom;
+    }
