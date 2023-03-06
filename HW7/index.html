@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Homework 5</title>
+</head>
+<body>
+    <!--Выполнить все задачи в теге script. Комментарии, в которых написаны задачи, не стирать, код с решением задачи пишем под комментарием.-->
+
+    <p class="dropdown">Привет :)</p>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown button
+        </button>
+        <div class="menu dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+    </div>
+
+    <script>
+        "use strict";
+
+        //[]()
+        //[]()
+        //1. Ко всем элементам, имеющим класс "dropdown-item" добавить еще один класс "super-dropdown", необходимо использовать методы forEach и querySelectorAll и свойство classList у элементов.
+        //[]()
+
+        console.log("Task1");
+
+        function Task1() {
+            document.querySelectorAll(".dropdown-item").forEach(e => e.classList.add("super-dropdown"));
+            console.log(document.querySelectorAll(".dropdown-item"));
+        }
+
+        Task1();
+
+        //2. У элемента с классом btn необходимо убрать класс "btn-secondary", если он присутствует у этого элемента, либо добавить, если такого класса у элемента не было.
+        //[]()
+
+        console.log("Task2");
+
+        function Task2() {
+
+            // Используем существующий методы  contains - который проверяет существование класса, и с помощью тернарного выражения либо добавляем (add), либо удаляем (remove) класс.
+            document.querySelector('.btn').classList.contains("btn-secondary") ? document.querySelector('.btn').classList.remove("btn-secondary") : document.querySelector('.btn').classList.add("btn-secondary");
+            console.log(document.querySelectorAll(".btn"));
+
+            // Используем существующий метод добавления/удаления класса toggle
+            document.querySelector('.btn').classList.toggle('btn-secondary');
+            console.log(document.querySelectorAll(".btn"));
+
+        }
+
+        Task2();
+
+        //3. Необходимо удалить класс "dropdown-menu" у элемента, у которого присутствует класс "menu".
+        //[]()
+
+        console.log("Task3");
+
+        function Task3() {
+
+            // по логике это задание должно быть 2 (по типу 1 - добавление, 2 - удаление, 3 - переключение или добавление/переключение)
+            document.querySelector('.menu').classList.remove('dropdown-menu');
+        }
+
+        Task3();
+
+        //4. Используя метод insertAdjacentHTML добавьте после div'a с классом "dropdown" следующую разметку:
+        //`<a href="#">link</a>`
+        //[]()
+
+        console.log("Task4");
+
+        function Task4() {
+
+            console.log('До добавления');
+            console.log(document.querySelector('div.dropdown').nextElementSibling);
+
+            document.querySelector('div.dropdown').insertAdjacentHTML('afterend', '<a href="#">link</a>');
+
+            console.log('После добавления');
+            console.log(document.querySelector('div.dropdown').nextElementSibling);
+
+        }
+
+        Task4();
+
+        //5. У элемента с id "dropdownMenuButton" замените id на "superDropdown".
+        //[]()
+
+        console.log("Task5");
+
+        function Task5() {
+
+            console.log("До изменения id");
+            console.log(document.querySelector('#dropdownMenuButton').id);
+
+            document.querySelector('#dropdownMenuButton').id = 'superDropdown1';
+
+            console.log("После первого изменения (querySelector)");
+            console.log(document.querySelector('#superDropdown1').id);
+
+            // Тоже самое, но через getElementById
+            document.getElementById('superDropdown1').id = 'superDropdown';
+
+            console.log("После второго изменения (getElementById)");
+            console.log(document.getElementById('superDropdown').id);
+        }
+
+        Task5();
+
+        //6. Добавьте атрибут data-dd со значением 3 элементу у которого существует атрибут "aria-labelledby" равный "dropdownMenuButton" используя dataset.
+        //[]()
+
+        console.log("Task6");
+
+        function Task6() {
+
+            document.querySelector('[aria-labelledby="dropdownMenuButton"]').dataset.dd = "3";
+
+            //Проверяем
+            console.log(document.querySelector('[aria-labelledby="dropdownMenuButton"]'));
+            console.log(document.querySelector('[aria-labelledby="dropdownMenuButton"]').getAttribute("data-dd"));
+        }
+
+        Task6();
+
+        //7. Удалите атрибут type у элемента с классом "dropdown-toggle".
+
+        console.log("Task7");
+
+        function Task7() {
+
+            console.log("До удаления атрибута");
+            console.log(document.querySelector('.dropdown-toggle').getAttributeNames());
+
+            document.querySelector('.dropdown-toggle').removeAttribute('type');
+
+            console.log("После удаления атрибута");
+            console.log(document.querySelector('.dropdown-toggle').getAttributeNames());
+        }
+
+        Task7();
+
+    </script>
+</body>
+</html>
