@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Homework 9</title>
+    <link rel="shortcut icon" type="./image/x-icon" href="../img/favicon.ico">
+
+
+    <style>
+        /*для второго задания - делаем класс невидимым*/
+        .message {
+            visibility: hidden;
+        }
+
+        /*для 3 задания делаем класс error*/
+        .error {
+            border: 2px solid red;
+            border-radius: 15px;
+        }
+    </style>
+
+</head>
+<body>
+    <input id="from" type="text">
+    В инпуте написано: <span></span>
+
+    <br>
+
+    <button class="messageBtn">Показать блок</button>
+    <div class="message">
+        Привет :)
+    </div>
+
+    <br>
+
+    <form>
+        <label>
+            Первый инпут:
+            <input class="form-control" type="text">
+        </label>
+        <br>
+        <br>
+        <label>
+            Второй инпут:
+            <select class="form-control">
+                <option value=""></option>
+                <option value="1">Один</option>
+                <option value="2">Два</option>
+            </select>
+        </label>
+        <br>
+        <br>
+        <button>Отправить</button>
+    </form>
+
+    <script>
+        "use strict";
+
+        //1. При изменении значения в input с id="from", значение содержащееся в нем должно моментально отображаться в span. То есть при печати в input'е тег span также должен меняться.
+
+        function Task1() {
+
+            document.querySelector("#from").addEventListener('input', e => {
+                document.querySelector("span").textContent = e.target.value;
+            });
+
+            // Эксперименты
+            //document.querySelector("#from").addEventListener('keyup', e => {
+            //    document.querySelector("span").textContent = e.target.value;
+            //});
+
+            // работает по изменении
+            //document.querySelector("#from").addEventListener('change', e => {
+            //    document.querySelector("span").textContent = e.target.value;
+            //});
+
+            // работает при написании следующей буквы
+            //document.querySelector("#from").addEventListener('keydown', e => {
+            //    document.querySelector("span").textContent = e.target.value;
+            //});
+
+
+            //function Spantext () { document.querySelector("span").textContent = document.querySelector("#from").value; }
+
+            //document.querySelector("#from").onkeyup =  Spantext;
+            /*document.querySelector("#from").onkeydown = Spantext;*/
+            /*document.querySelector("#from").onkeypress =  Spantext;*/
+
+        }
+
+        Task1();
+
+        //2. При клике на кнопку с классом messageBtn необходимо элементу с классом message:
+        //  - добавить два класса: animate_animated и animate_fadeInLeftBig
+        //  - поставить данному элементу стиль visibility в значение 'visible'.
+
+        function Task2() {
+
+            let message = document.querySelector('.message');
+
+            document.querySelector('.messageBtn').addEventListener('click', () => {
+
+                message.classList.add('animate_animated', 'animate_fadeInLeftBig');
+                message.style.visibility = 'visible';
+
+            });
+        }
+
+        Task2();
+
+        //3. Необходимо при отправке формы проверить, заполнены ли все поля в этой форме. Если какое-либо поле не заполнено, форма не должна отправляться, также должны быть подсвечены незаполненные поля (необходимо поставить класс error незаполненным полям). Как только пользователь начинает заполнять какое-либо поле, необходимо, при вводе в данное поле, произвести проверку:
+        //  - Если поле пустое, необходимо данное поле подсветить (поставить класс error данному полю).
+        //  - Если поле было чем - либо заполнено, подсветку(класс error) необходимо убрать.
+
+        function Task3() {
+
+            const formEl = document.querySelector('form');
+
+            // При подтверждении submit у формы у всех пустых элементов добавит стиль error
+            formEl.addEventListener('submit', event => {
+                formEl.querySelectorAll('input, select').forEach(formControlEl => {
+                    if (formControlEl.value === '') {
+                        formControlEl.classList.add('error');
+                        // блокируем выполнение submit, пока есть пустое поле
+                        event.preventDefault();
+                    }
+                });
+            });
+
+            // При изменении текста у target в  форме если поле пустое - добавим класс error, если нет удалим класс
+            formEl.addEventListener('input', event => {
+
+                event.target.value === '' ?
+                    event.target.classList.add('error') :
+                    event.target.classList.remove('error');
+            });
+        }
+
+        Task3();
+
+    </script>
+</body>
+</html>
