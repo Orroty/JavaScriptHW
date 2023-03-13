@@ -1,0 +1,62 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+}
+body {
+    display: block;
+    width: 100%;
+    max-width: 1400px;
+    padding-top: 50px;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,390px);
+    gap: 30px;
+    justify-content: center;
+    justify-items: center;
+}
+
+.from_JSON {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 360px;
+    padding: 15px;
+    border: solid 2px black;
+    border-radius: 15px;
+    background: #8edfb7;
+}
+
+    .from_JSON > * {
+        padding: 0 15px;
+        padding-top: 10px;
+    }
+
+    .from_JSON > div:nth-child(1) {
+        padding-left: 50px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-radius: 15px;
+        background: rgba(0,0,0,0.25);
+        font-size: 20px;
+    }
+
+.country, .region {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.inserted_data {
+    font-style: italic;
+    color:darkslategray;
+}
+
+.imgOfCat{
+
+}

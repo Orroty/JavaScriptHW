@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Homework 10</title>
+    <link rel="shortcut icon" type="./image/x-icon" href="../img/favicon.ico">
+
+    <script src="data.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <link href="./style.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="forma" style="padding: 30px 0; text-align: center;  ">
+        <select id="selectTypeList" style="border-radius: 15px; font-size: larger; padding: 5px; ">
+            <option value="fromFile">Get data from file</option>
+            <option value="fromNet">Get data from NET</option>
+        </select>
+
+        <button id="TypeButtonSelect" style="border-radius: 15px; font-size: larger; padding: 5px; ">
+            Select type of work
+        </button>
+    </div>
+    <div class="content">
+        <!--<div class="from_JSON">
+            <div class="country">
+
+                <h3 class="name">Country:  <span class = "inserted_data">Aruba</span></h3>
+                <p class="iso2Code_country">AW</p>
+            </div>
+            <div class="region">
+                <p class="region_name">Region -  <span class = "inserted_data">Latin America & Caribbean</span></p>
+                <p class="iso2Code_region">ZJ</p>
+            </div>
+            <p class="capitalCity">Capital - <span class = "inserted_data">Oranjestad</span></p>
+            <p class="adminregion">Adminregion -  <span class = "inserted_data"></span></p>
+            <p class="incomeLevel">Income Level - <span class = "inserted_data"> High income</span></p>
+            <p class="lendingType">Lending Type - <span class = "inserted_data"> Not classified</span></p>
+        </div>-->
+    </div>
+
+
+
+    <script>
+        let buttonSelect = document.getElementById("TypeButtonSelect");
+
+        buttonSelect.onclick = function () {
+            let fromWhere = document.getElementById("selectTypeList").value;
+
+            document.querySelector('.content').innerHTML = "";
+            console.clear();
+            if (fromWhere === "fromFile") {
+                GetfromTextData();
+            }
+            else {
+                GetFromNet();
+            }
+        }
+        function GetfromTextData() {
+
+            let data = JSON.parse(dataInfo);
+            console.log(data);
+            data.forEach(element => {
+
+                let divFromJSON = document.createElement('div');
+                divFromJSON.classList.add('from_JSON');
+                document.querySelector('.content').appendChild(divFromJSON);
+
+
+                let divCountry = document.createElement('div');
+                divCountry.classList.add('country');
+                divFromJSON.appendChild(divCountry);
+
+                let h3CountryName = document.createElement('h3');
+                h3CountryName.classList.add('name');
+                h3CountryName.textContent = "Country: ";
+                divCountry.appendChild(h3CountryName);
+
+                let span = document.createElement('span');
+                span.classList.add('inserted_data');
+                span.textContent = element.name;
+                h3CountryName.appendChild(span);
+
+                let pCountryIso = document.createElement('p');
+                pCountryIso.classList.add('iso2Code_country');
+                pCountryIso.textContent = element.iso2Code;
+                divCountry.appendChild(pCountryIso);
+
+
+                let divRegion = document.createElement('div');
+                divRegion.classList.add('region');
+                divFromJSON.appendChild(divRegion);
+
+                let h3RegionName = document.createElement('h3');
+                h3RegionName.classList.add('region_name');
+                h3RegionName.textContent = "Region: ";
+                divRegion.appendChild(h3RegionName);
+
+
+                span = document.createElement('span');
+                span.classList.add('inserted_data');
+                span.textContent = element.region.value;
+                h3RegionName.appendChild(span);
+
+                let pRegionIso = document.createElement('p');
+                pRegionIso.classList.add('iso2Code_region');
+                pRegionIso.textContent = element.region.iso2code;
+                divRegion.appendChild(pRegionIso);
+
+                let pcapitalCity = document.createElement('p');
+                pcapitalCity.classList.add('capitalCity');
+                pcapitalCity.textContent = "Capital: ";
+                divFromJSON.appendChild(pcapitalCity);
+
+                span = document.createElement('span');
+                span.classList.add('inserted_data');
+                if (element.capitalCity === "") {
+                    span.textContent = "NULL";
+                }
+                else {
+                    span.textContent = element.capitalCity;
+                }
+                pcapitalCity.appendChild(span);
+
+                let pAdminRegion = document.createElement('p');
+                pAdminRegion.classList.add('adminregion');
+                pAdminRegion.textContent = "AdminRegion: ";
+                divFromJSON.appendChild(pAdminRegion);
+
+
+                span = document.createElement('span');
+                span.classList.add('inserted_data');
+
+                if (element.adminregion.value === "") {
+                    span.textContent = "NULL";
+                }
+                else {
+                    span.textContent = element.adminregion.value;
+                }
+                pAdminRegion.appendChild(span);
+
+                let pIncomeLevel = document.createElement('p');
+                pIncomeLevel.classList.add('incomeLevel');
+                pIncomeLevel.textContent = "Income Level: ";
+                pIncomeLevel.style.textDecoration = "underline";
+                divFromJSON.appendChild(pIncomeLevel);
+
+                span = document.createElement('span');
+                span.classList.add('inserted_data');
+                span.textContent = element.incomeLevel.value;
+                pIncomeLevel.appendChild(span);
+
+                let pLendingType = document.createElement('p');
+                pLendingType.classList.add('lendingType');
+                pLendingType.textContent = "Lending Type: ";
+                divFromJSON.appendChild(pLendingType);
+
+                span = document.createElement('span');
+                span.classList.add('inserted_data');
+                span.textContent = element.lendingType.value;
+                pLendingType.appendChild(span);
+
+            });
+        }
+
+        // async ибо ждем ответа от fetch - await
+        async function GetFromNet() {
+            let url1 = "https://catfact.ninja/fact";
+            let url2 = "https://aws.random.cat/meow?ref=apilist.fun";
+
+            let data1 = [];
+            let h1FirstTitle = document.createElement('h1');
+            h1FirstTitle.classList.add('title_cats');
+            h1FirstTitle.innerText = "10 ФАКТОВ О КОТИКАХ";
+            h1FirstTitle.style.gridColumn = "1/-1";
+            document.querySelector('.content').appendChild(h1FirstTitle);
+
+            // берем инфу из 2 API из первой - текст, из второй - рандомную картинку
+
+            for (var i = 0; i < 10; i++) {
+                let buff = {};
+                let response = await fetch(url1);
+                if (response.ok) {
+                    let json = await response.json();
+                    Object.assign(buff, json);
+                } else {
+                    alert("Ошибка HTTP: " + response.status);
+                }
+                response = await fetch(url2);
+                if (response.ok) {
+                    let json = await response.json();
+                    Object.assign(buff, json);
+                } else {
+                    alert("Ошибка HTTP: " + response.status);
+                }
+
+
+                data1.push(buff);
+            }
+            console.log(data1);
+            data1.forEach(element => {
+
+
+                let divFromJSON = document.createElement('div');
+                divFromJSON.classList.add('from_JSON');
+                document.querySelector('.content').appendChild(divFromJSON);
+
+                let imgOfCat = document.createElement('img');
+                imgOfCat.classList.add('imgOfCat');
+                imgOfCat.src = element.file;
+                divFromJSON.appendChild(imgOfCat);
+
+                let pOfCat = document.createElement('p');
+                pOfCat.classList.add('pOfCat');
+                pOfCat.innerText = element.fact;
+                divFromJSON.appendChild(pOfCat);
+            });
+
+        }
+    </script>
+
+
+</body>
+</html>
