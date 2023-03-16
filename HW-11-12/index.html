@@ -4,17 +4,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Домашнее задание 11</title>
+    <title>Домашнее задание 11 - 12</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
 
     <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/cart.css" rel="stylesheet">
 
     <link rel="shortcut icon" type="./image/x-icon" href="../img/favicon.ico">
 
-    <script src="./data.js"></script>
+    <script src="./jscr/data.js"></script>
+    <script defer src="jscr/fillhtml.js"></script>
+
 </head>
 <body>
     <header>
@@ -31,7 +34,7 @@
             <label for="menu_check">
                 <img class="header_img_nav" src="./img/header_right_1.svg" alt="Navigation">
             </label>
-            <a href="#">  
+            <a href="#">
                 <img src="./img/header_right_2.svg" class="mobile_no_right_header_img header_img_oth" alt="Personal Accaunt">
             </a>
             <a href="#">
@@ -139,42 +142,47 @@
                 Shop for items based on what we featured in this week
             </p>
         </div>
+
+        <!--//---------------------------------------//-->
+        <!--НАЧАЛО ДЗ 11-->
+        <!--jscr/fillhtml.js - файл-->
+
         <div class="other">
             <section class="products_list">
-                <!--<article class="product">
-                    <img class="product_img" src="./img/product_1.jpg" alt="Product 1">
-                    <h3>
-                        ELLERY X M'O CAPSULE
-                    </h3>
-                    <p class="product_description">
-                        Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.
-                    </p>
-                    <p class="product_price">
-                        $52.00
-                    </p>
-                    <button onclick="document.location='../index.html'" class="product_add_button">
-                    <img src="./img/add_to_cart_pic.svg" alt="Add to Cart">
-                    Add to Cart
-                    </button>
-                </article>-->
             </section>
         </div>
+
+        <!--РАЗРЫВ В ДЗ 11-->
+        <!--//---------------------------------------//-->
+
         <button class="all_products_button">
             Browse All Product
         </button>
+
+
+        <!--//---------------------------------------//-->
+        <!--НАЧАЛО ДЗ 12-->
+        <!--jscr/fillhtml.js - файл - строка 40 по 220-->
+
+        <div class="other_cart">
+            <section class="cart" data-visible="false">
+                <h2 class="cart_heading long_box_offer">Cart Items</h2>
+            </section>
+        </div>
+
+        <!--КОНЕЦ 12 ДЗ-->
+        <!--//---------------------------------------//-->
+
     </main>
 
+    <!--//---------------------------------------//-->
+    <!--ПРОДОЛЖЕНИЕ ДЗ 11-->
+
     <section class="benefits">
-        <!--<article class="benifit">
-            <img src="./img/benefit_pic_1.svg" alt="Delivery">
-            <h3>
-                Free Delivery
-            </h3>
-            <p>
-                Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive models.
-            </p>
-        </article>-->
     </section>
+
+    <!--КОНЕЦ 11 ДЗ-->
+    <!--//---------------------------------------//-->
 
     <aside class="subscribe_tag">
         <div class="left_subs">
@@ -224,83 +232,6 @@
         </div>
     </footer>
 
-    <script>
-        function FillFeturedItems() {
-            let data = JSON.parse(featuredItems);
-            console.log(data);
-            data.forEach(element => {
 
-                let articleProductFromJSON = document.createElement('article');
-                articleProductFromJSON.classList.add('product');
-                document.querySelector('.products_list').appendChild(articleProductFromJSON);
-
-                let imgProductFromJSON = document.createElement('img');
-                imgProductFromJSON.classList.add('product_img');
-                imgProductFromJSON.src = element.img;
-                imgProductFromJSON.alt = element.img_alt;
-                articleProductFromJSON.appendChild(imgProductFromJSON);
-
-                let h3ProductFromJSON = document.createElement('h3');
-                h3ProductFromJSON.textContent = element.title;
-                articleProductFromJSON.appendChild(h3ProductFromJSON);
-
-
-                let p1ProductFromJSON = document.createElement('p');
-                p1ProductFromJSON.classList.add('product_description');
-                p1ProductFromJSON.textContent = element.description;
-                articleProductFromJSON.appendChild(p1ProductFromJSON);
-
-                let p2ProductFromJSON = document.createElement('p');
-                p2ProductFromJSON.classList.add('product_price');
-                p2ProductFromJSON.textContent = element.price;
-                articleProductFromJSON.appendChild(p2ProductFromJSON);
-
-                let buttonProductFromJSON = document.createElement('button');
-                buttonProductFromJSON.classList.add('product_add_button');
-                /*buttonProductFromJSON.onclick = element.button_path;*/
-                buttonProductFromJSON.setAttribute("onclick", element.button_path);
-                articleProductFromJSON.appendChild(buttonProductFromJSON);
-
-                let buttonImgProductFromJSON = document.createElement('img');
-                buttonImgProductFromJSON.src = element.button_img;
-                buttonImgProductFromJSON.alt = element.button;
-                buttonProductFromJSON.appendChild(buttonImgProductFromJSON);
-
-                let buttonspanProductFromJSON = document.createElement('span');
-                buttonspanProductFromJSON.innerText = element.button;
-                buttonProductFromJSON.appendChild(buttonspanProductFromJSON);
-
-                
-            });
-        }
-
-        FillFeturedItems();
-
-        function FillBenifits() {
-            let data = JSON.parse(benifits);
-            console.log(data);
-            data.forEach(element => {
-
-                let benefitFromJSON = document.createElement('article');
-                benefitFromJSON.classList.add('benifit');
-                document.querySelector('.benefits').appendChild(benefitFromJSON);
-
-                let imgBenefitFromJSON = document.createElement('img');
-                imgBenefitFromJSON.src = element.pic;
-                imgBenefitFromJSON.alt = element.alt_pic;
-                benefitFromJSON.appendChild(imgBenefitFromJSON);
-
-                let h3BenefitFromJSON = document.createElement('h3');
-                h3BenefitFromJSON.innerText = element.title;
-                benefitFromJSON.appendChild(h3BenefitFromJSON);
-
-                let pBenefitFromJSON = document.createElement('p');
-                pBenefitFromJSON.innerText = element.description;
-                benefitFromJSON.appendChild(pBenefitFromJSON);
-            });
-        }
-
-        FillBenifits();
-    </script>
 </body>
 </html>
